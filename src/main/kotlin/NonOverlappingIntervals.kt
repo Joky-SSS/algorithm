@@ -1,3 +1,5 @@
+import java.util.*
+
 /**
 给定一个区间的集合，找到需要移除区间的最小数量，使剩余区间互不重叠。
 
@@ -30,13 +32,24 @@
 
 class NonOverlappingIntervals {
     fun eraseOverlapIntervals(intervals: Array<IntArray>): Int {
-        if(intervals == null || intervals.size < 2) return 0
-
-
-        return 0
+        if (intervals == null || intervals.size < 2) return 0
+        Arrays.sort(intervals) { a1, a2 ->
+            a1[1] - a2[1]
+        }
+        var removed = 0
+        var preArray: IntArray = intervals[0]
+        for (i in 1 until intervals.size) {
+            val cur = intervals[i]
+            if (cur[0] >= preArray[1]) {
+                preArray = cur
+            } else {
+                removed++
+            }
+        }
+        return removed
     }
 }
 
 fun main() {
-    NonOverlappingIntervals().eraseOverlapIntervals(arrayOf(intArrayOf(1,2), intArrayOf(2,3)))
+    NonOverlappingIntervals().eraseOverlapIntervals(arrayOf(intArrayOf(1, 2), intArrayOf(2, 3)))
 }
