@@ -49,7 +49,3 @@ class NonOverlappingIntervals {
         return removed
     }
 }
-
-fun main() {
-    NonOverlappingIntervals().eraseOverlapIntervals(arrayOf(intArrayOf(1, 2), intArrayOf(2, 3)))
-}
