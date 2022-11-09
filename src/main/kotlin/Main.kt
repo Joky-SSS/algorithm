@@ -3,4 +3,5 @@ fun main() {
     println("array is :${array.contentToString()}")
     MergeSort.sort(array)
     println("sorted array is :${array.contentToString()}")
+    //test push
 }
